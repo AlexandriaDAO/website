@@ -1,14 +1,6 @@
 {
   "canisters": {
-    "alex_landing_page_backend": {
-      "candid": "src/alex_landing_page_backend/alex_landing_page_backend.did",
-      "package": "alex_landing_page_backend",
-      "type": "rust"
-    },
     "alex_landing_page_frontend": {
-      "dependencies": [
-        "alex_landing_page_backend"
-      ],
       "source": [
         "src/alex_landing_page_frontend/dist"
       ],
