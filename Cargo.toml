@@ -1,0 +1,5 @@
+[workspace]
+members = [
+    "src/alex_landing_page_backend"
+]
+resolver = "2"
