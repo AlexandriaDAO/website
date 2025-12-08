@@ -4,31 +4,38 @@ function App() {
   const products = [
     {
       name: 'lbry.app',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
+      description: 'LBRY.app is a decentralized archival platform for permanently preserving Web2 content as revenue-sharing NFTs. Built on ArWeave for permanent storage and ICP for compute, content creators mint NFTs that earn ongoing ALEX rewards whenever users interact with the network. The dual-token economy features LBRY as mintable operational currency and ALEX (hard-capped at 21M) for governance and staking revenue—with two-thirds of total supply distributed to NFT creators and content owners.',
       url: 'https://lbry.app',
       logo: '/logos/alex.png',
-      tags: ['Library', 'ContentFi']
+      tags: ['DeFi', 'ContentFi', 'Infrastructure']
+    },
+    {
+      name: 'OpenHouse',
+      description: 'OpenHouse is a provably fair casino where you can be the house. Users provide liquidity and earn from a transparent 1% house edge, with all randomness cryptographically verified via Internet Computer\'s VRF. Games include Crash, Plinko, Blackjack, and Dice—all open-source with publicly auditable odds. 100% of platform revenue flows to ALEX stakers.',
+      url: 'https://openhouse.games',
+      logo: '/logos/openhouse.png',
+      tags: ['Gaming', 'DeFi']
     },
     {
       name: 'DAOPad',
-      description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.',
+      description: 'DAOPad turns LLCs into Smart Contracts, unifying company structure, legal agreements, and operations into a single autonomous system. Winner of DFINITY\'s WCHL2025 Hackathon (Real-World-Asset Track), it provides a white-glove framework for migrating to a legally recognized Wyoming DAO LLC—complete with business bank accounts, fiat off-ramps, and the ability to own property and sign contracts. Governance is powered by locked KongSwap LP tokens, with 1% of dealflow distributed to ALEX stakers.',
       url: 'https://daopad.org',
       logo: '/logos/third_party/daopad_logo.png',
-      tags: ['DeFi', 'Tooling']
+      tags: ['DAO', 'RWA', 'DeFi']
     },
     {
       name: 'KongLocker',
-      description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae.',
+      description: 'KongLocker is a blackholed liquidity locking service for KongSwap. Projects can permanently lock their LP tokens to demonstrate long-term commitment, with the canister tracking individual shares of locked liquidity. These locked LP positions serve as governance weight in DAOPad, granting voting power proportional to permanently committed value.',
       url: 'https://konglocker.com',
       logo: '/logos/third_party/kong_locker.png',
-      tags: ['Infrastructure', 'Security']
+      tags: ['DeFi', 'Infrastructure']
     },
     {
       name: 'Caffeine Launcher',
-      description: 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt porro quisquam est.',
+      description: 'Caffeine Launcher is a token launchpad on the Internet Computer featuring dual-token distribution mechanics. Projects can fair-launch with a 1% fee that automatically flows to buying and burning LBRY tokens, creating deflationary pressure tied directly to platform activity. Established tokens can integrate at no cost, with all launched tokens eligible for DAOPad governance integration.',
       url: 'https://caffeinelauncher.com',
       logo: '/logos/third_party/lbry_fun.svg',
-      tags: ['DeFi', 'Tooling']
+      tags: ['DeFi', 'Launchpad']
     }
   ];
 
