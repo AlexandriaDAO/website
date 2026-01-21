@@ -3,12 +3,24 @@ import './index.scss';
 
 function App() {
   const words = [
-    'DeFi',
-    'ContentFi',
-    'Web3 Gaming',
-    'Rev-Share Tokenomics',
-    'Prediction Markets',
-    'Developer Tooling'
+    'VetKey Encryption',
+    'Chain-Key ECDSA',
+    'Threshold Signatures',
+    'Provably Fair VRF',
+    'Orthogonal Persistence',
+    'ArWeave Mirroring',
+    'Blackholed Canisters',
+    'Deflationary Burns',
+    'LP Locking Primitives',
+    'DAO LLC Wrappers',
+    'Revenue-Share NFTs',
+    'Dual-Token Economics',
+    'Cross-Chain Settlement',
+    'Certified Variables',
+    'HTTP Outcalls',
+    'Reverse Gas Models',
+    'WASM Smart Contracts',
+    'Cycle Burn Analytics'
   ];
 
   const [displayText, setDisplayText] = useState('');
@@ -48,6 +60,22 @@ function App() {
       tags: ['DeFi', 'ContentFi', 'Infrastructure']
     },
     {
+      name: 'CycleScan',
+      tagline: 'The cycle burn leaderboard for ICP. Like CoinGecko, but for cycle consumption.',
+      description: 'CycleScan tracks real-time cycle consumption across the Internet Computer, monitoring ~2,900 canisters from 100+ projects. Features include 7-day burn rate trends with sparkline visualizations, top-up detection with inferred burn calculations, and project-level aggregation. Data updates hourly via GitHub Actions with no backend canister required—a fully static architecture that fetches live data directly from raw GitHub URLs.',
+      url: 'https://xknwi-uaaaa-aaaak-qu4oq-cai.icp0.io',
+      logo: '/logos/projects/cyclescan.png',
+      tags: ['Infrastructure', 'Analytics']
+    },
+    {
+      name: 'IPG',
+      tagline: 'The first fully decentralized payment gateway. Accept BTC and ICP with zero setup fees, no KYC, and sub-second payment detection.',
+      description: 'Internet Payment Gateway is a first-of-its-kind merchant solution uniquely possible on ICP—leveraging HTTP outcalls for real-time browser-based payment polling and chain-key ckBTC for trustless Bitcoin settlement. No intermediaries, no monthly fees, no KYC. Just copy-paste a widget into any website and start accepting crypto. Regressive withdrawal fees (1.0% → 0.2%) reward volume, and all funds remain fully self-custodial until you withdraw.',
+      url: 'https://62rey-3aaaa-aaaag-acjla-cai.icp0.io',
+      logo: '/logos/projects/ipg.png',
+      tags: ['Payments', 'Infrastructure', 'DeFi']
+    },
+    {
       name: 'OpenHouse',
       tagline: 'A decentralized casino where anyone can be the house, using ICP\'s unique randomness for skill-based and prediction market gaming.',
       description: 'OpenHouse is a provably fair casino where you can be the house. Users provide liquidity and earn from a transparent 1% house edge, with all randomness cryptographically verified via Internet Computer\'s VRF. Games include Crash, Plinko, Blackjack, and Dice—all open-source with publicly auditable odds. 100% of platform revenue flows to ALEX stakers.',
@@ -78,15 +106,14 @@ function App() {
       url: 'https://caffeinelauncher.com',
       logo: '/logos/projects/lbry_fun.svg',
       tags: ['DeFi', 'Launchpad']
-    },
-    {
-      name: 'CycleScan',
-      tagline: 'The cycle burn leaderboard for ICP. Like CoinGecko, but for cycle consumption.',
-      description: 'CycleScan tracks real-time cycle consumption across the Internet Computer, monitoring ~2,900 canisters from 100+ projects. Features include 7-day burn rate trends with sparkline visualizations, top-up detection with inferred burn calculations, and project-level aggregation. Data updates hourly via GitHub Actions with no backend canister required—a fully static architecture that fetches live data directly from raw GitHub URLs.',
-      url: 'https://xknwi-uaaaa-aaaak-qu4oq-cai.icp0.io',
-      logo: '/logos/projects/cyclescan.png',
-      tags: ['Infrastructure', 'Analytics']
     }
+  ];
+
+  const metrics = [
+    { value: '50K+', label: 'Revshare NFTs Minted' },
+    { value: '7', label: 'Production dApps' },
+    { value: 'WCHL2025', label: 'Hackathon Winner' },
+    { value: '100%', label: 'Fair Launched' }
   ];
 
   return (
@@ -94,6 +121,15 @@ function App() {
       <section className="hero">
         <h1 className="title">{displayText}<span className="cursor">|</span></h1>
         <p className="subtitle">Building ICP's Great City</p>
+      </section>
+
+      <section className="metrics">
+        {metrics.map((item) => (
+          <div key={item.label} className="metric">
+            <span className="metric__value">{item.value}</span>
+            <span className="metric__label">{item.label}</span>
+          </div>
+        ))}
       </section>
 
       <section className="products-section">
@@ -109,6 +145,11 @@ function App() {
               <div className="col-project">
                 <img src={product.logo} alt="" />
                 <span className="project-name">{product.name}</span>
+                <div className="tags">
+                  {product.tags.map((tag) => (
+                    <span key={tag} className="tag">{tag}</span>
+                  ))}
+                </div>
               </div>
               <div className="col-tagline">{product.tagline}</div>
               <div className="col-description">{product.description}</div>
