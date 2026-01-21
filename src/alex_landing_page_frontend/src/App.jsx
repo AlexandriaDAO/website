@@ -78,6 +78,14 @@ function App() {
       url: 'https://caffeinelauncher.com',
       logo: '/logos/projects/lbry_fun.svg',
       tags: ['DeFi', 'Launchpad']
+    },
+    {
+      name: 'CycleScan',
+      tagline: 'The cycle burn leaderboard for ICP. Like CoinGecko, but for cycle consumption.',
+      description: 'CycleScan tracks real-time cycle consumption across the Internet Computer, monitoring ~2,900 canisters from 100+ projects. Features include 7-day burn rate trends with sparkline visualizations, top-up detection with inferred burn calculations, and project-level aggregation. Data updates hourly via GitHub Actions with no backend canister required—a fully static architecture that fetches live data directly from raw GitHub URLs.',
+      url: 'https://xknwi-uaaaa-aaaak-qu4oq-cai.icp0.io',
+      logo: '/logos/projects/cyclescan.png',
+      tags: ['Infrastructure', 'Analytics']
     }
   ];
 
