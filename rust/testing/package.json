@@ -1,0 +1,21 @@
+{
+  "name": "alexandria-testing",
+  "version": "1.0.0",
+  "description": "Automated visual testing for Alexandria landing page",
+  "main": "index.js",
+  "scripts": {
+    "capture": "npx ts-node capture.ts",
+    "capture:local": "APP_URL=http://localhost:8080 npx ts-node capture.ts",
+    "capture:prod": "APP_URL=https://z6d57-uyaaa-aaaau-ac24a-cai.icp0.io npx ts-node capture.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@types/node": "^25.0.10",
+    "playwright": "^1.57.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}

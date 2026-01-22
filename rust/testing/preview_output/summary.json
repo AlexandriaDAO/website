@@ -1,0 +1,18 @@
+{
+  "timestamp": "2026-01-22T02:43:55.565Z",
+  "url": "http://localhost:8080",
+  "success": true,
+  "errorCount": 0,
+  "warningCount": 3,
+  "screenshots": [
+    "preview_output/screenshot_desktop.png",
+    "preview_output/screenshot_mobile.png",
+    "preview_output/screenshot_tablet.png"
+  ],
+  "errors": [],
+  "warnings": [
+    "The `integrity` attribute is currently ignored for preload destinations that do not support subresource integrity. See https://crbug.com/981419 for more information",
+    "[GroupMarkerNotSet(crbug.com/242999)!:A0D02000541E0000]Automatic fallback to software WebGL has been deprecated. Please use the --enable-unsafe-swiftshader (about:flags#enable-unsafe-swiftshader) flag to opt in to lower security guarantees for trusted content.",
+    "WebGL: CONTEXT_LOST_WEBGL: loseContext: context lost"
+  ]
+}

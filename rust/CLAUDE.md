@@ -1,5 +1,16 @@
 # Alexandria Landing Page (Pure Rust Canvas) - Claude Guide
 
+## IMPORTANT: LOCAL DEVELOPMENT ONLY
+
+**DO NOT deploy this Rust version to mainnet.** The production frontend is the TypeScript version at `/home/theseus/alexandria/alex_landing_page/typescript/`. This Rust version is experimental and for local development only.
+
+To deploy the production frontend:
+```bash
+cd /home/theseus/alexandria/alex_landing_page/typescript && dfx deploy --network ic alex_landing_page_frontend
+```
+
+---
+
 ## Overview
 
 **ZERO CSS. ZERO DOM.** Pure Rust canvas-rendered landing page using egui/eframe, compiled to WebAssembly. A portfolio flex demonstrating that modern web UIs don't need CSS or the DOM - just a canvas and Rust.
@@ -21,11 +32,13 @@ This is NOT a typical web app. The entire UI renders to a single `<canvas>` elem
 - **Responsive breakpoints** - Typography and layout adapt to screen width (all in Rust)
 - **Hover effects** - Hit-testing and visual feedback without CSS `:hover`
 
-## Canister Info
+## Production Canister (TypeScript version)
 
 | Canister ID | URL |
 |-------------|-----|
 | `z6d57-uyaaa-aaaau-ac24a-cai` | https://z6d57-uyaaa-aaaau-ac24a-cai.icp0.io |
+
+**Note:** This URL runs the TypeScript frontend, not this Rust version.
 
 ## Commands
 
@@ -36,46 +49,97 @@ cargo install trunk
 # Local development
 trunk serve --port 8080
 
-# Build for production
+# Build
 trunk build --release
 
-# Deploy to mainnet (LIVE immediately)
-dfx deploy --network ic alex_landing_page_frontend
-
-# Check canister status
-dfx canister --network ic status alex_landing_page_frontend
-
-# Headless preview (generates PNG without browser)
-cargo run --bin preview [width] [height]
+# DO NOT deploy to mainnet - use TypeScript version instead
+# See: /home/theseus/alexandria/alex_landing_page/typescript/
 ```
 
-## Headless Preview (Agent Visual Testing)
+## Autonomous Debugging (IMPORTANT)
 
-A software-rendered preview tool that generates PNG screenshots without requiring a browser or display. This enables AI agents to verify UI changes autonomously.
+**NEVER ask the user to check the browser or copy/paste logs.** Use Playwright to capture everything automatically.
+
+### Quick Debug Command
 
 ```bash
-# Generate 1920x1080 preview (default)
-cargo run --bin preview
-
-# Custom resolution
-cargo run --bin preview 1280 720
-
-# Output location
-preview_output/preview.png
+cd /home/theseus/alexandria/alex_landing_page/rust/testing && npm run capture:prod
 ```
 
-**How it works:**
-1. Creates a headless egui context
-2. Runs UI rendering (same code as WASM version)
-3. Tessellates shapes into triangles
-4. Software-rasterizes to pixel buffer
-5. Saves as PNG
+Then read these files:
+1. `cat preview_output/summary.json` - Check `success`, `errorCount`, `errors[]`
+2. `cat preview_output/console.log` - Full console output with `[RUST]` debug logs
+3. View `preview_output/screenshot_desktop.png` - See what the page looks like
 
-**Use cases:**
-- Verify rendering after code changes without opening a browser
-- Autonomous visual regression testing
-- Debug blank page issues (like the one this tool was created to solve)
-- Generate screenshots for documentation
+### Full Agent Workflow
+
+```bash
+# 1. Make code changes to src/lib.rs
+
+# 2. Build WASM
+cd /home/theseus/alexandria/alex_landing_page/rust && trunk build
+
+# 3. Deploy to production (if testing deployed version)
+dfx deploy --network ic alex_landing_page_frontend
+
+# 4. Capture screenshots and logs
+cd testing && npm run capture:prod
+
+# 5. Check results
+cat preview_output/summary.json   # Quick status
+cat preview_output/console.log    # Full logs if errors
+
+# 6. View screenshots to verify rendering
+# (Use Read tool on preview_output/screenshot_desktop.png)
+
+# 7. If errors, fix and repeat from step 1
+```
+
+### Output Files
+
+```
+testing/preview_output/
+├── screenshot_desktop.png   # 1920x1080 - main view
+├── screenshot_mobile.png    # 390x844 - responsive check
+├── screenshot_tablet.png    # 1024x768 - tablet view
+├── console.log              # ALL browser console output
+└── summary.json             # Machine-readable status
+```
+
+### Interpreting Results
+
+**summary.json:**
+```json
+{
+  "success": true,      // false if any errors
+  "errorCount": 0,      // Number of JS/WASM errors
+  "errors": [],         // Array of error messages
+  "warnings": [...]     // Warnings (often ignorable)
+}
+```
+
+**console.log patterns:**
+- `[RUST] WASM module loaded` - WASM initialized OK
+- `[RUST] Starting application` - App is starting
+- `[RUST] Base URL for images:` - Image loading debug
+- `RuntimeError: unreachable` - Rust panic (check last [RUST] log before this)
+- `Failed to load resource` - Missing file or network error
+
+### Local Development Testing
+
+```bash
+# Terminal 1: Start dev server
+cd /home/theseus/alexandria/alex_landing_page/rust && trunk serve
+
+# Terminal 2: Capture
+cd testing && npm run capture:local
+```
+
+### One-time Setup (already done)
+
+```bash
+cd testing && npm install && npx playwright install chromium
+```
 
 ## Structure
 
@@ -83,12 +147,15 @@ preview_output/preview.png
 ├── src/
 │   ├── lib.rs              # WASM app: styles, layout, components
 │   └── bin/
-│       └── preview.rs      # Headless software renderer
+│       └── preview.rs      # Headless software renderer (optional)
+├── testing/
+│   ├── capture.ts          # Playwright capture script
+│   ├── package.json        # npm scripts: capture, capture:local, capture:prod
+│   └── preview_output/     # Screenshots and logs
 ├── index.html              # Minimal: just <canvas id="canvas">
 ├── public/favicon.ico      # Site icon
 ├── dist/                   # Built WASM + JS loader
-├── preview_output/         # Generated PNG screenshots
-├── Cargo.toml              # egui, eframe, wasm-bindgen, image
+├── Cargo.toml              # egui, eframe, wasm-bindgen
 ├── Trunk.toml              # Build config
 ├── dfx.json                # Canister config
 └── canister_ids.json       # z6d57-uyaaa-aaaau-ac24a-cai
@@ -156,7 +223,7 @@ The cyberpunk aesthetic (grid, particles, scanlines) is intentionally impossible
 
 ## Important
 
-- **Mainnet only** - No local replica, all deploys are LIVE
-- Always run `trunk build --release` before `dfx deploy`
+- **LOCAL DEVELOPMENT ONLY** - Do not deploy this to mainnet
+- Production uses the TypeScript frontend at `../typescript/`
+- Use `trunk serve` for local testing
 - WASM binary is ~2.5MB unoptimized (wasm-opt disabled for compatibility)
-- Continuous repaint requested for animations - this is intentional

@@ -1,0 +1,21 @@
+[2026-01-22T02:43:49.441Z] [INFO] Starting capture for http://localhost:8080
+[2026-01-22T02:43:49.527Z] [INFO] Navigating to page...
+[2026-01-22T02:43:49.538Z] [WARNING] The `integrity` attribute is currently ignored for preload destinations that do not support subresource integrity. See https://crbug.com/981419 for more information
+[2026-01-22T02:43:49.543Z] [INFO] Page loaded with status: 200
+[2026-01-22T02:43:49.543Z] [INFO] Waiting 3000ms for WASM initialization...
+[2026-01-22T02:43:49.585Z] [CONSOLE] [RUST] WASM module loaded successfully
+[2026-01-22T02:43:49.585Z] [CONSOLE] [RUST] Starting application initialization...
+[2026-01-22T02:43:49.585Z] [CONSOLE] [RUST] Got document
+[2026-01-22T02:43:49.586Z] [CONSOLE] [RUST] Got canvas element
+[2026-01-22T02:43:49.586Z] [CONSOLE] [RUST] Starting eframe WebRunner...
+[2026-01-22T02:43:51.699Z] [CONSOLE] [RUST] Creating AlexandriaApp...
+[2026-01-22T02:43:51.712Z] [CONSOLE] [RUST] Base URL for images: http://localhost:8080
+[2026-01-22T02:43:51.712Z] [CONSOLE] [RUST] Example image URL: http://localhost:8080/logos/projects/alex.png
+[2026-01-22T02:43:51.714Z] [CONSOLE] [RUST] Application started successfully
+[2026-01-22T02:43:51.890Z] [WARNING] [GroupMarkerNotSet(crbug.com/242999)!:A0D02000541E0000]Automatic fallback to software WebGL has been deprecated. Please use the --enable-unsafe-swiftshader (about:flags#enable-unsafe-swiftshader) flag to opt in to lower security guarantees for trusted content.
+[2026-01-22T02:43:51.890Z] [WEBGL] [GroupMarkerNotSet(crbug.com/242999)!:A0D02000541E0000]Automatic fallback to software WebGL has been deprecated. Please use the --enable-unsafe-swiftshader (about:flags#enable-unsafe-swiftshader) flag to opt in to lower security guarantees for trusted content.
+[2026-01-22T02:43:51.896Z] [WARNING] WebGL: CONTEXT_LOST_WEBGL: loseContext: context lost
+[2026-01-22T02:43:51.896Z] [WEBGL] WebGL: CONTEXT_LOST_WEBGL: loseContext: context lost
+[2026-01-22T02:43:54.520Z] [INFO] Screenshot saved: preview_output/screenshot_desktop.png (1920x1080)
+[2026-01-22T02:43:55.041Z] [INFO] Screenshot saved: preview_output/screenshot_mobile.png (390x844)
+[2026-01-22T02:43:55.565Z] [INFO] Screenshot saved: preview_output/screenshot_tablet.png (1024x768)
