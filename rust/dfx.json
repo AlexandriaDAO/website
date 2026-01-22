@@ -1,11 +1,8 @@
 {
   "canisters": {
     "alex_landing_page_frontend": {
-      "source": [
-        "src/alex_landing_page_frontend/dist"
-      ],
-      "type": "assets",
-      "workspace": "alex_landing_page_frontend"
+      "source": ["dist"],
+      "type": "assets"
     }
   },
   "defaults": {

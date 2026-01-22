@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alexandria - Building ICP's Great City</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/style-787e2378bd2bf6ea.css" integrity="sha384-r+jkcgPKaRAGIGSrbLoaAX0Hh70VPKINQ4qkF3zKht+286y4LarilGN0CExghlrF"/>
+    
+<script type="module">
+import init, * as bindings from '/alexandria-landing-88629cf4ffbb874d.js';
+const wasm = await init({ module_or_path: '/alexandria-landing-88629cf4ffbb874d_bg.wasm' });
+
+
+window.wasmBindings = bindings;
+
+
+dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
+
+</script>
+    
+    
+    
+<link rel="modulepreload" href="/alexandria-landing-88629cf4ffbb874d.js" crossorigin="anonymous" integrity="sha384-ESepPTzx+/9Vnyo13w3rVs/zuHBuV7b1iBUjQnEG0cNgP6zqnurSp7/n69kIvp5z"><link rel="preload" href="/alexandria-landing-88629cf4ffbb874d_bg.wasm" crossorigin="anonymous" integrity="sha384-yhe9arwTn1MeA1zaWMoVqOnAdKjwKtegolDdtBlaxzMdk39ghRjYKEIxXdXvkDTa" as="fetch" type="application/wasm"></head>
+<body>
+</body>
+</html>

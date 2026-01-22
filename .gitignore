@@ -18,8 +18,10 @@ target/
 
 # frontend code
 node_modules/
-dist/
 .svelte-kit/
+
+# Keep dist folders (needed for ICP deployment)
+# typescript/dist/ and rust/dist/ should be committed
 
 # environment variables
 .env
